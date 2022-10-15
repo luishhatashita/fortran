@@ -14,13 +14,19 @@ program main
     ! Assigning values to the input variables, to be used in the func_m module
     x_initial = 0
     x_final = 2
-    !nodes = 3
 
-    ! Calling function from func_m
-    !call create_array(x_initial, x_final, nodes, array) 
-    !call print_array(array)
+    ! Calling functions from func_m:
+
+    ! 1. Arrays
+    ! Messing with arrays, the first one would be similar as a np.ones, and the
+    ! second starts at x_initial and splits uniformly until x_final
     call create_array(nodes, array)
     call print_array(array)
     call create_custom_array(x_initial, x_final, nodes, custom_array)
     call print_array(custom_array)
+    
+    ! 2. Functions versus subroutines:
+    do i=1, nodes
+        print *, function_1(custom_array(i))
+    end do
 end program main
