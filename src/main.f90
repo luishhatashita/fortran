@@ -7,7 +7,7 @@ program main
     real :: x_initial, x_final
     ! Output variables
     real :: f_xf
-    real, dimension(nodes) :: array
+    real, dimension(nodes) :: array, custom_array
     ! Temporary global variable
     real :: x
 
@@ -21,5 +21,6 @@ program main
     !call print_array(array)
     call create_array(nodes, array)
     call print_array(array)
-
+    call create_custom_array(x_initial, x_final, nodes, custom_array)
+    call print_array(custom_array)
 end program main

@@ -1,7 +1,7 @@
 module func_m
     implicit none
     integer :: i
-    public :: create_array, print_array 
+    public :: create_array, print_array, create_custom_array 
 
     contains
 
@@ -66,5 +66,21 @@ module func_m
                 print *, a(i)
             end do
         end subroutine print_array
+
+        subroutine create_custom_array(xi, xf, n, a)
+            implicit none
+            integer, intent(in) :: n
+            real, intent(in) :: xi, xf
+            real, dimension(n), intent(out) :: a
+            real :: dx
+
+            dx = (xf-xi)/(n-1)
+            a(1) = xi
+            a(n) = xf
+
+            do i=2, n-1
+                a(i) = a(i-1) + (i-1)*dx
+            end do
+        end subroutine
 
 end module func_m
